@@ -10,6 +10,8 @@ import { productsAndCartLoader } from "./loaders/productsAndCartLoader";
 // import app from "./firebase/firebase.config";
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
+import Shipping from "./components/Shipping/Shipping";
+import PrivateRoute from "./routes/PrivateRoute";
 
 // const auth = getAuth(app);
 
@@ -31,7 +33,19 @@ function App() {
         },
         {
           path: "inventory",
-          element: <Inventory></Inventory>,
+          element: (
+            <PrivateRoute>
+              <Inventory></Inventory>
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "shipping",
+          element: (
+            <PrivateRoute>
+              <Shipping></Shipping>
+            </PrivateRoute>
+          ),
         },
         {
           path: "about",
